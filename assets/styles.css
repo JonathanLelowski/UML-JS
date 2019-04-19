@@ -1,0 +1,45 @@
+/**
+*CSS rules for myApp
+**/
+[myApp] h2 {
+    color: rgb(71, 52, 235)
+}
+[myApp] p {
+    color: rgb(0, 0, 0)
+}
+[myApp] h2 i {
+    display: inline-block;
+    color: rgb(71, 52, 235);
+    transform: scale(1) rotate(0);
+    transition: all 0.5s 0s ease-in;
+}
+[myApp] h2 i:hover {
+    color: rgb(255, 0, 0);
+    transform: scale(1) rotate(360deg);
+}
+[myApp] p i {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    transform: scale(1) rotate(0);
+    transition: all 0.5s 0s ease-in;
+}
+[myApp] p i:hover {
+    color: rgb(255, 0, 0);
+    transform: scale(1) rotate(360deg);
+    
+}   
+
+/**
+* Classe spécifique pour mise en surbrillance des sociatés
+**/
+.selected {
+    background-color: rgba(255, 56, 23, 1)
+}
+
+.company ul {
+    display: none;
+}
+
+.no-display {
+    display: none;
+}

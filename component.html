@@ -1,0 +1,79 @@
+<!doctype html>   <!--balise qui indique que le code est du html 5 -->
+<html lang="fr">   <!--ajout d'attribut(s) dans les balises html, toujours dans la balise ouvrante-->
+
+    <head>   <!--défini l'entête du document (contenu invisible)-->
+        <meta charset="utf-8">   <!--jeu de caractère utilisé dans le doc--> <!-- pas de balise fermante pour (meta) = balise orpheline-->
+        <meta name="viewport" content="width=device-width, user-scalable=no"> <!-- faire comprendre à l'écran que la largeur utilisée sera identique à la taille de l'écran et sur des terminaux tactiles, l'utilisateur ne pourra pas zoomer-->
+        
+        <title>Mon composant</title>   <!-- mon composant = contenu de la balise-->
+
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- liaison avec une feuille de styles / attribut rel = / href = hypertexte référence, indique le lui ou est stockée cette ressource-->
+        <link rel="stylesheet" href="./assets/styles.css">
+    </head>
+
+        <body>
+
+            <!--Composant Counter : présentation-->
+            <div class="input-group mb-3">
+                <!-- Bouton avant la zone de saisie-->
+                <div class="input-group-prepend">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button" 
+                        disabled
+                        id="decrease-value">
+                        -
+                        </button>
+                    
+                </div>
+                <!-- Zone de saisie--> <!--data-max = attribut défini par nous même--> 
+                <input 
+                    type="text" 
+                    class=".col-form-lg" 
+                    value="1"
+                    id="quantity"
+                    data-max="10"
+                    data-min="1"
+                    readonly> 
+                    
+                <!-- Bouton après la zone de saisie-->
+                <div class="input-group-append">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button" 
+                        id="increase-value">
+                        +
+                    </button>
+                </div>
+            </div>
+
+            <!-- Afficher message de max atteint -->
+            <div class="alert alert-danger alert-dismissible fade show no-display" role="alert" id='messageUtilMax'>
+                    <strong>Attention </strong><span>Vous avez atteint la limite max</span>
+                    <button 
+                    type="button" 
+                    class="close" 
+                    data-dismiss="alert" 
+                    aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+
+            <!-- Afficher message de min atteint -->
+            <div class="alert alert-danger alert-dismissible fade show no-display" role="alert" id='messageUtilMin'>
+                    <strong>Attention </strong><span>Vous avez atteint la limite min</span>
+                    <button 
+                    type="button" 
+                    class="close" 
+                    data-dismiss="alert" 
+                    aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+
+            <!-- Intégration des ressources javascript-->
+            <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+            <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="./assets/my-counter.js"></script>
+        </body>
+</html>

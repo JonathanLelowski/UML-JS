@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf8">
+
+        <title>Hello jQuery !</title>
+
+        <link href="./assets/styles.css" rel="stylesheet">
+
+        <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        <header>
+                <h1></h1>
+            </header>
+
+            <main>
+
+                <!-- Un compteur [+/-] On pose le décor -->
+                <div class="counter">
+                    <!-- Pour décrémenter la valeur-->
+                    <span class="down">
+                        -
+                    </span>
+
+                    <!-- La valeur elle-même -->
+                    <span class="value">0</span>
+
+                    <!-- Pour incrémenter le valeur -->
+                    <span class="up">
+                        +
+                    </span>
+                </div>
+
+                <div class="company">
+                    <h2>Aélion</h2>
+                    <adress>
+                        <p>95, Chemin de Gabardie</p>
+                        <P><span class="zipcode">31200</span> <span>Toulouse</span></p>
+                    </adress>
+
+                    <!-- La liste des contacts -->
+
+                    <ul>
+                        <li>M. Bond James</li>
+                        <li>Mlle Enfayitt Mélusine</li>
+                        <li>Mme Zetofré Mélanie</li>
+                    </ul>
+
+                    </div>
+                
+                <div class="company">
+                    <h2>Capgemini</h2>
+                    <adress>
+                        <p>109, Avenue du Général Eisenhower</p>
+                        <P><span class="zipcode">31000</span> <span>Toulouse</span></p>
+                    </adress>
+
+                    <!-- La liste des contacts -->
+                    <ul>
+                        <li>M. Jean Talut</li>
+                        <li>M. Jean Talut</li>
+                        <li>M. Jean Talut</li>
+                        <li>M. Jean Talut</li>
+                    </ul>
+
+                    </div>
+
+            </main>
+            <script>
+                $('h1').html('Hello jQuery');
+                //const monH1=document.querySelector('h1');
+                //monH1.innerHTML = 'Hello jQuery natif JS';
+
+                $('.company').on(
+                    "click",
+                    function(event) {
+                        const theOne = $(this); // L'objet cliqué
+
+                        let removeClass = true; // Par défaut, j'estime qu'il faut retirer la classe .css
+
+                        if(!theOne.hasClass('selected')) {  // Tester si l'objet n'a pas encore le 
+                            removeClass = false;
+                        }
+
+                        // supprime pour tout le monde la classe .selected
+                        $('.company').removeClass('selected');
+                        $('.company ul').hide();
+                        
+                        // appliquer sur l'élément ce qui doit etre fait
+                        if (removeClass) {
+                            $(this).removeClass('selected');
+                            $(this).children('ul').hide();
+                        } else {
+                            $(this).addClass('selected');
+                            $(this).children('ul').show();
+                        }
+                    }
+                );
+
+                // Challenge #1 Détecter un click sur le bouton + de l'interface
+                // Challenge #2 Récupérer la valeur du span.value
+                // Challenge #3 Ajouter à la valeur courante de span.value / parseint => converti une chaine de caractère en nombre quand c'est possible
+                // Challenge #4 Remplacer le contenu de span.value par la nouvelle valeur
+                $('.up').on(
+                    "click",
+                    function(event) {
+                        console.info('Click sur + détecté !')
+                        // objet qui contient la valeur à incrémenter ?
+                        const value =$('.value');
+                        console.log('valeur courante de spann class=value : ' + value.html());
+                        
+                        // Ajouter 1 à la valeur courante
+                        let nextValue = parseInt(value.html());
+                        if (nextValue < 10) { 
+                            nextValue = nextValue + 1
+                            console.log('valeur si bouton + : ' + nextValue);
+                        } else {
+                            alert('La valeur ne peut pas être supérieur à 10');
+                        }
+                            // Challenge #4 Remplacer le contenu de span.value par la nouvelle valeur
+                            value.html(nextValue);
+                    }
+                )
+                $('.down').on(
+                "click",
+                function(event) {
+                    console.info('Click sur + détecté !')
+                    // objet qui contient la valeur à incrémenter ?
+                    const value =$('.value');
+                    console.log('valeur courante de spann class=value : ' + value.html());
+                    
+                    // Enlever 1 à la valeur courante
+                    let nextValue = parseInt(value.html());
+                    if (nextValue > 0) {
+                        nextValue = nextValue - 1
+                        console.log('valeur si bouton + : ' + nextValue);
+                    } else {
+                        alert('La valeur ne peut pas être négative');
+                    }
+                        // Challenge #4 Remplacer le contenu de span.value par la nouvelle valeur
+                        value.html(nextValue);
+                }
+                )
+            
+            </script>
+    </body>
+
+</html>
